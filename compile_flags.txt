@@ -1,0 +1,4 @@
+-Iinclude/common
+-Iinclude/win32
+-Imusl
+-D_XOPEN_SOURCE=700

@@ -21,15 +21,32 @@ list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/nearbyint.c")
 list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/nearbyintf.c")
 list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/nearbyintl.c")
 
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/ilogb.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/ilogbf.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/ilogbl.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/j0.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/j0f.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/j1.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/j1f.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/jn.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/jnf.c")
+list(REMOVE_ITEM MUSL_MATH_SRC "${MUSL_ROOT}/src/math/tgamma.c")
+
 add_library(${PROJECT_NAME} STATIC
     ${MUSL_MATH_SRC}
 )
 
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /Ox /Oi- /wd4244 /wd4723 /wd4146 /NODEFAULTLIB)
+    target_compile_options(${PROJECT_NAME} PRIVATE /Ox /Oi-
+        /wd4244 /wd4723 /wd4146
+        /wd4116
+        /wd4305
+        )
+    target_link_options(${PROJECT_NAME} PRIVATE /NODEFAULTLIB)
     message("MSVC set")
 else()
-    target_compile_options(${PROJECT_NAME} PRIVATE -O2 -ffp-contract=off -nostdlib)
+    target_compile_options(${PROJECT_NAME} PRIVATE -O2 -ffp-contract=off)
+    target_link_options(${PROJECT_NAME} PRIVATE -nostdlib)
     message("GCC/Clang set")
 endif()
 
@@ -38,14 +55,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${MUSL_ROOT}
     )
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    "_XOPEN_SOURCE=700"
+    )
+
 if(WIN32)
     target_include_directories(${PROJECT_NAME} PRIVATE include/win32)
 else()
-    target_compile_definitions(${PROJECT_NAME} PRIVATE
-        # "weak=__attribute__((weak))"
-        # "hidden=__attribute__((visibility(\"hidden\")))"
-        "_XOPEN_SOURCE=700"
-        )
     target_include_directories(${PROJECT_NAME} PRIVATE include/linux)
 endif()
 
