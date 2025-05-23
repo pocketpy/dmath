@@ -60,6 +60,9 @@ else()
     target_include_directories(${PROJECT_NAME} PRIVATE include/linux)
 endif()
 
-add_executable(dmath_test tests/main.c)
+option(BUILD_TESTS "Build tests" OFF)
 
-target_link_libraries(dmath_test dmath)
+if(BUILD_TESTS)
+    add_executable(dmath_test tests/main.c)
+    target_link_libraries(dmath_test dmath)
+endif()
