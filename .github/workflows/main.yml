@@ -2,6 +2,13 @@ name: CMake on multiple platforms
 
 on:
   push:
+    paths-ignore:
+      - 'scripts/**'
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - 'scripts/**'
+      - '**.md'
 
 jobs:
   build_ubuntu:
