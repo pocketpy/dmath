@@ -39,7 +39,7 @@ jobs:
       run: |
         mkdir -p output/linux_x64_${{ matrix.c_compiler }}
         ${{ steps.strings.outputs.build-output-dir }}/dmath_test
-        cp ${{ github.workspace }}/case_result.txt output/linux_x64_${{ matrix.c_compiler }}
+        cp ${{ github.workspace }}/output.txt output/linux_x64_${{ matrix.c_compiler }}
     - uses: actions/upload-artifact@v4
       with:
         name: linux_x64_${{ matrix.c_compiler }}
@@ -98,7 +98,7 @@ jobs:
       run: |
         mkdir -p output/linux_${{ matrix.arch }}_${{ matrix.c_compiler }}
         ${{ steps.strings.outputs.build-output-dir }}/dmath_test
-        cp ${{ github.workspace }}/case_result.txt output/linux_${{ matrix.arch }}_${{ matrix.c_compiler }}
+        cp ${{ github.workspace }}/output.txt output/linux_${{ matrix.arch }}_${{ matrix.c_compiler }}
     - uses: actions/upload-artifact@v4
       with:
         name: linux_${{ matrix.arch }}_${{ matrix.c_compiler }}
@@ -136,7 +136,7 @@ jobs:
       run: |
         mkdir -p output/macos_${{ matrix.c_compiler }}
         ${{ steps.strings.outputs.build-output-dir }}/dmath_test
-        cp ${{ github.workspace }}/case_result.txt output/macos_${{ matrix.c_compiler }}
+        cp ${{ github.workspace }}/output.txt output/macos_${{ matrix.c_compiler }}
     - uses: actions/upload-artifact@v4
       with:
         name: macos_${{ matrix.c_compiler }}
@@ -175,7 +175,7 @@ jobs:
       run: |
         mkdir -p output/win32_${{ matrix.c_compiler }}
         ${{ steps.strings.outputs.build-output-dir }}/${{ matrix.build_type }}/dmath_test.exe
-        cp ${{ github.workspace }}/case_result.txt output/win32_${{ matrix.c_compiler }}
+        cp ${{ github.workspace }}/output.txt output/win32_${{ matrix.c_compiler }}
     - uses: actions/upload-artifact@v4
       with:
         name: win32_${{ matrix.c_compiler }}
@@ -252,10 +252,10 @@ jobs:
           name: linux_armv7_clang
           path: ${{ github.workspace }}/output/all-in-one
 
-      - name: "Compare artifacts"
-        run: |
-          pip install pandas
-          python scripts/all-in-one.py ${{ github.workspace }}/output
+      # - name: "Compare artifacts"
+      #   run: |
+      #     pip install pandas
+      #     python scripts/all-in-one.py ${{ github.workspace }}/output
       
       - name: "Upload merged artifact"
         uses: actions/upload-artifact@v4.3.3
