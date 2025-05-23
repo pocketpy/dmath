@@ -1,5 +1,5 @@
-#ifndef _MATH_H
-#define _MATH_H
+#ifndef _DMATH_H
+#define _DMATH_H
 
 #ifdef __cplusplus
 extern "C" {
