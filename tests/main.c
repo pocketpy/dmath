@@ -2,6 +2,10 @@
 #include <stdio.h>
 
 int main(){
+#ifndef _DMATH_H
+    abort();
+#endif
+
     double x = log(10);
 
     // write to output.txt

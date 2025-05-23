@@ -62,5 +62,6 @@ option(BUILD_TESTS "Build tests" OFF)
 
 if(BUILD_TESTS)
     add_executable(dmath_test tests/main.c)
+    target_include_directories(dmath_test PRIVATE include/public)
     target_link_libraries(dmath_test dmath)
 endif()
