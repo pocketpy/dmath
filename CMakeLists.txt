@@ -51,7 +51,6 @@ else()
 endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE include/common)
-target_include_directories(${PROJECT_NAME} PUBLIC include/public)
 
 if(WIN32)
     target_include_directories(${PROJECT_NAME} PRIVATE include/win32)
