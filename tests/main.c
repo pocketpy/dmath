@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main(){
-    double x = sin(0.5);
+    double x = log(10);
 
     // write to output.txt
     FILE *fp = fopen("output.txt", "w");
@@ -11,7 +11,7 @@ int main(){
         return -1;
     }
 
-    fprintf(fp, "sin(0.5) = %f\n", x);
+    fprintf(fp, "log(10) = %f\n", x);
     fclose(fp);
     return 0;
 }
