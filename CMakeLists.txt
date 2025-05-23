@@ -52,11 +52,6 @@ endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     include/common
-    ${MUSL_ROOT}
-    )
-
-target_compile_definitions(${PROJECT_NAME} PRIVATE
-    "_XOPEN_SOURCE=700"
     )
 
 if(WIN32)

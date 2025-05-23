@@ -1,3 +1,3 @@
 #pragma once
 
-#include "include/stdint.h"
+#include "../../musl/include/stdint.h"
