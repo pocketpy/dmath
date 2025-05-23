@@ -1,5 +1,17 @@
 #pragma once
 
+#ifdef __FP_FAST_FMA
+    #undef __FP_FAST_FMA
+#endif
+
+#ifdef __FP_FAST_FMAF
+    #undef __FP_FAST_FMAF
+#endif
+
+#ifdef __FP_FAST_FMAL
+    #undef __FP_FAST_FMAL
+#endif
+
 #ifdef _WIN32
     #define weak
     #define hidden
