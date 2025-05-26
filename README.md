@@ -6,7 +6,12 @@
 
 ## Installation
 
-Clone this repo or add it as a submodule to your project directory.
+First clone this repo recursively:
+
+```bash
+git clone --recursive https://github.com/pocketpy/dmath
+```
+
 Then add the following line to your `CMakeLists.txt`:
 
 ```cmake
