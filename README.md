@@ -43,6 +43,28 @@ if(MSVC)
 endif()
 ```
 
+## Usage
+
+```c
+// CMakeLists.txt will redirect <math.h> to "dmath/include/public/math.h".
+// You don't need to modify your existing code.
+#include <math.h>
+
+#include <stdio.h>
+
+int main(){
+
+// You can check this macro to ensure that `dmath` is used.
+#ifndef _DMATH_H
+    abort();
+#endif
+
+    double x = log(10);
+    printf("log(10) = %f\n", x);
+    return 0;
+}
+```
+
 ## Tested Platforms
 
 We have tested `dmath` on the following platforms and configurations.
