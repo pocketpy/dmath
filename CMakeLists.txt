@@ -43,14 +43,13 @@ if(MSVC)
         /wd4305
         )
     target_link_options(${PROJECT_NAME} PRIVATE /NODEFAULTLIB)
-    message("MSVC set")
 else()
     target_compile_options(${PROJECT_NAME} PRIVATE -O2 -ffp-contract=off)
     target_link_options(${PROJECT_NAME} PRIVATE -nostdlib)
-    message("GCC/Clang set")
 endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE include/common)
+target_include_directories(${PROJECT_NAME} INTERFACE include/public)
 
 if(WIN32)
     target_include_directories(${PROJECT_NAME} PRIVATE include/win32)
@@ -62,6 +61,5 @@ option(BUILD_TESTS "Build tests" OFF)
 
 if(BUILD_TESTS)
     add_executable(dmath_test tests/main.c)
-    target_include_directories(dmath_test PRIVATE include/public)
     target_link_libraries(dmath_test dmath)
 endif()
