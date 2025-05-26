@@ -1,9 +1,24 @@
 # dmath
 
+<p>
+<!-- Build -->
+<a title="Build" href="https://github.com/pocketpy/dmath/actions/workflows" >
+<img src="https://github.com/pocketpy/dmath/actions/workflows/main.yml/badge.svg" /></a>
+<!-- C11 -->
+<a href="https://en.wikipedia.org/wiki/C11_(C_standard_revision)">
+<img alt="Python" src="https://img.shields.io/badge/C-11-blue.svg"></a>
+<!-- License -->
+<a href="https://github.com/pocketpy/dmath/blob/main/LICENSE">
+<img alt="GitHub" src="https://img.shields.io/github/license/pocketpy/dmath.svg?color=blue"></a>
+<!-- Github Release -->
+<a href="https://github.com/pocketpy/dmath/releases">
+<img alt="GitHub release" src="https://img.shields.io/github/release/pocketpy/dmath.svg"></a>
+</p>
+
 `dmath` is a deterministic math library for game projects that running on standard mobile (Android/iOS) and desktop platforms (Windows/Linux/MacOS).
 
 `dmath` is a drop-in replacement for the math library in C11, based on [musl-libc v1.2.5](https://musl.libc.org/) with modifications to ensure that all floating-point operations are deterministic across different platforms and compilers. Although musl-libc is primarily designed for Linux, `dmath` can be used on Windows and MacOS.
-[pocketpy](https://github.com/pocketpy/pocketpy) uses `dmath` as its math library when compiled with `-DPK_ENABLE_DETERMINISM=ON`.
+[pocketpy](https://github.com/pocketpy/dmath) uses `dmath` as its math library when compiled with `-DPK_ENABLE_DETERMINISM=ON`.
 
 > `dmath` is not designed for embedded systems.
 
