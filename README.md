@@ -18,6 +18,11 @@ Then add the following line to your `CMakeLists.txt`:
 add_subdirectory(<path_to_dmath_repo>)
 
 target_link_libraries(<your_target> dmath)
+
+if(MSVC)
+    # Force multiple definitions to be allowed in MSVC.
+    target_link_options(<your_target> PRIVATE /FORCE:MULTIPLE)
+endif()
 ```
 
 ## Tested Platforms
