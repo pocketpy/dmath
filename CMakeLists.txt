@@ -37,14 +37,24 @@ add_library(${PROJECT_NAME} STATIC
 )
 
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /Ox /Oi-
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Ox")
+        add_definitions(-DNDEBUG)
+    endif()
+
+    target_compile_options(${PROJECT_NAME} PRIVATE /Oi-
         /wd4244 /wd4723 /wd4146
         /wd4116
         /wd4305
         )
     target_link_options(${PROJECT_NAME} PRIVATE /NODEFAULTLIB)
 else()
-    target_compile_options(${PROJECT_NAME} PRIVATE -O2 -ffp-contract=off)
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2")
+        add_definitions(-DNDEBUG)
+    endif()
+
+    target_compile_options(${PROJECT_NAME} PRIVATE -ffp-contract=off)
     target_link_options(${PROJECT_NAME} PRIVATE -nostdlib)
 endif()
 
