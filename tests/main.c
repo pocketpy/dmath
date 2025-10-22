@@ -3,7 +3,7 @@
 
 int main(){
 #ifndef _DMATH_H
-    abort();
+    show not reach here!!!
 #endif
 
     double x = log(10);
