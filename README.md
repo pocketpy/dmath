@@ -20,8 +20,6 @@
 `dmath` is a drop-in replacement for the math library in C11, based on [musl-libc v1.2.5](https://musl.libc.org/) with modifications to ensure that all floating-point operations are deterministic across different platforms and compilers. Although musl-libc is primarily designed for Linux, `dmath` can be used on Windows and MacOS.
 [pocketpy](https://github.com/pocketpy/dmath) uses `dmath` as its math library when compiled with `-DPK_ENABLE_DETERMINISM=ON`.
 
-> `dmath` is not designed for embedded systems.
-
 ## Installation
 
 First clone this repo recursively:
